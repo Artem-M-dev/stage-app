@@ -1,0 +1,23 @@
+.header {
+    background-color: black;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h2 {
+        color: white;
+        font-size: 30px;
+    }
+    &__links {
+        display: flex;
+        align-items: center;
+        column-gap: 30px;
+        font-size: 20px;
+        img {
+            margin-left: 10px;
+            width: 28px;
+            height: 28px;
+            cursor: pointer;
+        }
+    }
+}
