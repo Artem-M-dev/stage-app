@@ -6,6 +6,7 @@ import About from '../about/About';
 import Favorites from '../favorites/Favorites';
 import Coffee from '../coffee/Coffee';
 import Contacts from '../contacts/Contacts';
+import Digital from '../digital/Digital';
 
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
             <Favorites/>
             <Coffee/>
             <Contacts/>
+            <Digital/>
         </div>
     )
 }
