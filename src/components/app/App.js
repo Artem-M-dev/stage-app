@@ -3,6 +3,7 @@ import Header from '../header/Header';
 import Welcome from '../welcome/Welcome';
 import About from '../about/About';
 import Favorites from '../favorites/Favorites';
+import Coffee from '../coffee/Coffee';
 
 const App = () => {
     return (
@@ -11,6 +12,7 @@ const App = () => {
             <Welcome/>
             <About/>
             <Favorites/>
+            <Coffee/>
         </div>
     )
 }
