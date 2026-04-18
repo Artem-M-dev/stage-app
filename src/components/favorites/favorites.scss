@@ -1,0 +1,101 @@
+.favorites {
+    padding: 20px 20px 40px 20px;
+    &__title {
+        font-size: 40px;
+        text-align: center;
+        &::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 1px;
+            background-color: black;
+            margin: 20px auto 0 auto;
+        }
+    }
+    &__subtitle {
+        font-size: 20px;
+        margin-top: 40px;
+        font-weight: bold;
+    }
+    &__tabs {
+        margin-top: 40px;
+        display: flex;
+        column-gap: 90px;
+        .favorites__tab {
+            display: flex;
+            column-gap: 20px;
+            .tab__circle {
+                width: 17px;
+                height: 17px;
+                border: 2px solid black;
+                border-radius: 50px;
+                cursor: pointer;
+            }
+            .tab__circle-active::before {
+                content: '';
+                display: block;
+                width: 7px;
+                height: 7px;
+                background-color: black;
+                border-radius: 50px;
+                margin: 3px auto 0 auto;
+            }
+            .tab__title-active {
+                font-weight: bold;
+            }
+        }
+    }
+    &__books {
+        margin-top: 40px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        row-gap: 40px;
+        padding: 0 40px 0 0;
+    }
+    &__book {
+        position: relative;
+        border: 1px solid black;
+        padding: 15px 20px;
+        width: 590px;
+        &-type {
+            font-size: 20px;
+            &::after {
+                content: '';
+                display: block;
+                width: 60px;
+                height: 1px;
+                background-color: #BB945F;
+                margin-top: 7px;
+            }
+        }
+        &-title {
+            margin-top: 20px;
+            font-weight: bold;
+            line-height: 40px;
+            font-size: 15px;
+        }
+        &-description {
+            margin-top: 20px;
+            line-height: 40px;
+            width: 320px;
+            text-transform: capitalize;
+            font-size: 15px;
+        }
+        &-buy {
+            margin-top: 20px;
+            width: 75px;
+            height: 30px;
+            text-align: center;
+            background-color: transparent;
+            border: 1px solid black;
+            border-radius: 2px;
+        }
+        &-image {
+            position: absolute;
+            bottom: -1px;
+            right: -40px;
+        }
+    }
+    
+}
