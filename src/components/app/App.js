@@ -7,6 +7,7 @@ import Favorites from '../favorites/Favorites';
 import Coffee from '../coffee/Coffee';
 import Contacts from '../contacts/Contacts';
 import Digital from '../digital/Digital';
+import Footer from '../footer/Footer';
 
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
             <Coffee/>
             <Contacts/>
             <Digital/>
+            <Footer/>
         </div>
     )
 }
