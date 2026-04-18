@@ -1,0 +1,19 @@
+.welcome {
+    background: url('../../images/welcome/WelcomeBack.png');
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    &__title {
+        width: fit-content;
+        background-color: black;
+        padding: 35px 40px;
+        h1 {
+            color: white;
+            font-size: 40px;
+            width: 520px;
+            text-align: center;
+            line-height: 50px;
+        }
+    }
+}
