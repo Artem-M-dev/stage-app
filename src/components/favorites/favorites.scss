@@ -62,6 +62,7 @@
         border: 1px solid black;
         padding: 15px 20px;
         width: 590px;
+        height: 555px;
         &-type {
             font-family: "Forum";
             font-size: 20px;
@@ -82,9 +83,9 @@
             letter-spacing: 2px;
         }
         &-description {
-            margin-top: 20px;
+            margin: 20px 0;
             line-height: 40px;
-            width: 320px;
+            width: 350px;
             text-transform: capitalize;
             font-size: 15px;
             letter-spacing: 2px;
@@ -99,9 +100,6 @@
             border-radius: 2px;
             font-size: 10px;
             cursor: pointer;
-        }
-        #mt20 {
-            margin-top: 20px
         }
         &-image {
             position: absolute;

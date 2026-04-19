@@ -22,15 +22,6 @@ const About = () => {
         setOffset(551 * index);
     };
 
-    // const activePagination = (e) => {
-    //     const element = e.target;
-
-    //     if (element.id == slideIndex) {
-    //         element.classList.add('pagination__point-active')
-    //     }
-    // }
-
-
     return (
         <div className="about">
             <h2 className="about__title">About</h2>
@@ -45,9 +36,15 @@ const About = () => {
                 </div>
             </div>
             <div className="about__pagination">
-                <div onClick={(e) => onChange(e, 0)} id="0" className={`pagination__point ${slideIndex == 0 ? 'pagination__point-active' : null}`}></div>
-                <div onClick={(e) => onChange(e, 1)} id="1" className={`pagination__point ${slideIndex == 1 ? 'pagination__point-active' : null}`}></div>
-                <div onClick={(e) => onChange(e, 2)} id="2" className={`pagination__point ${slideIndex == 2 ? 'pagination__point-active' : null}`}></div>
+                <div 
+                    onClick={(e) => onChange(e, 0)} 
+                    id="0" className={`pagination__point ${slideIndex == 0 ? 'pagination__point-active' : null}`}></div>
+                <div 
+                    onClick={(e) => onChange(e, 1)} 
+                    id="1" className={`pagination__point ${slideIndex == 1 ? 'pagination__point-active' : null}`}></div>
+                <div 
+                    onClick={(e) => onChange(e, 2)} 
+                    id="2" className={`pagination__point ${slideIndex == 2 ? 'pagination__point-active' : null}`}></div>
             </div>
         </div>
     )
