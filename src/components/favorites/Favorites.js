@@ -1,20 +1,53 @@
 import './favorites.scss';
 
-import book1 from '../../images/favorites/FavoritesBook1.png'
-import book2 from '../../images/favorites/FavoritesBook2.png'
-import book3 from '../../images/favorites/FavoritesBook3.png'
-import book4 from '../../images/favorites/FavoritesBook4.png'
-
 import { Component } from 'react';
+import Winter from '../cards/Winter'
+import Spring from '../cards/Spring'
+import Summer from '../cards/Summer'
+import Autumn from '../cards/Autumn'
 
 class Favorites extends Component {
+    state = {
+        type: 'winter'
+    }
+
+    tabs = [
+        {id: 'winter', label: 'Winter'},
+        {id: 'spring', label: 'Spring'},
+        {id: 'summer', label: 'Summer'},
+        {id: 'autumn', label: 'Autumn'},
+    ];
+
+    onChange = (tabType) => {
+        this.setState({
+            type: tabType
+        })
+    }
+
     render() {
+        const {type} = this.state;
+
         return (
             <div className="favorites">
                 <h2 className="favorites__title">Favorites</h2>
                 <h3 className="favorites__subtitle">Pick favorites of season</h3>
                 <div className="favorites__tabs">
-                    <div className="favorites__tab">
+                    {
+                        this.tabs.map(tab => (
+                            <div 
+                                key={tab.id}
+                                onClick={() => this.onChange(tab.id)}
+                                className="favorites__tab">
+                                <div 
+                                    className={`tab__circle ${tab.id === this.state.type ? 'tab__circle-active' : ''}`}></div>
+                                <p 
+                                    className={`tab__title ${tab.id === this.state.type ? 'tab__title-active' : ''}`}>
+                                        {tab.label}</p>
+                            </div>
+                        ))
+                    }
+
+                    {/* <div className="favorites__tab">
                         <div className="tab__circle tab__circle-active"></div>
                         <p className="tab__title tab__title-active">Winter</p>
                     </div>
@@ -29,38 +62,13 @@ class Favorites extends Component {
                     <div className="favorites__tab">
                         <div className="tab__circle"></div>
                         <p className="tab__title">Autumn</p>
-                    </div>
+                    </div> */}
                 </div>
-                <div className="favorites__books">
-                    <div className="favorites__book">
-                        <p className="favorites__book-type">Staff Picks</p>
-                        <h3 className="favorites__book-title">The Book Eaters <br />By Sunyi Dean</h3>
-                        <p className="favorites__book-description">An unusual sci-fi story about a book eater woman who tries desperately to save her dangerous mind-eater son from tradition and certain death. Complete with dysfunctional family values, light Sapphic romance, and a strong, complex protagonist. Not for the faint of heart.</p>
-                        <button id="mt20" className="favorites__book-buy">Buy</button>
-                        <img className="favorites__book-image" src={book1} alt="book" />
-                    </div>
-                    <div className="favorites__book">
-                        <p className="favorites__book-type">Staff Picks</p>
-                        <h3 className="favorites__book-title">Cackle <br />By Rachel Harrison</h3>
-                        <p className="favorites__book-description">Are your Halloween movies of choice The Witches of Eastwick and Practical Magic? Look no further than here - where a woman recovering from a breakup moves to a quaint town in upstate New York and befriends a beautiful witch.</p>
-                        <button className="favorites__book-buy">buy</button>
-                        <img className="favorites__book-image" src={book2} alt="book" />
-                    </div>
-                    <div className="favorites__book">
-                        <p className="favorites__book-type">Staff Picks</p>
-                        <h3 className="favorites__book-title">Dante: Poet of the Secular World <br />By Erich Auerbach</h3>
-                        <p className="favorites__book-description">Auerbach's engaging book places the 'Comedy' within the tradition of epic, tragedy, and philosophy in general, arguing for Dante's uniqueness as one who raised the individual and his drama of soul into something of divine significance—an inspired introduction to Dante's main themes.</p>
-                        <button id="mt20" className="favorites__book-buy">buy</button>
-                        <img className="favorites__book-image" src={book3} alt="book" />
-                    </div>
-                    <div className="favorites__book">
-                        <p className="favorites__book-type">Staff Picks</p>
-                        <h3 className="favorites__book-title">The Last Queen <br />By Clive Irving</h3>
-                        <p className="favorites__book-description">A timely and revelatory new biography of Queen Elizabeth (and her family) exploring how the Windsors have evolved and thrived as the modern world has changed around them.</p>
-                        <button className="favorites__book-buy">buy</button>
-                        <img className="favorites__book-image" src={book4} alt="book" />
-                    </div>
-                </div>
+
+                {type === 'winter' ? <Winter/> : null}
+                {type === 'spring' ? <Spring/> : null}
+                {type === 'summer' ? <Summer/> : null}
+                {type === 'autumn' ? <Autumn/> : null}
             </div>
         )
     }

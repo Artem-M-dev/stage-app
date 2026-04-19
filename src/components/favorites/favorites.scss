@@ -23,6 +23,7 @@
         margin-top: 40px;
         display: flex;
         column-gap: 90px;
+        cursor: pointer;
         .favorites__tab {
             display: flex;
             column-gap: 20px;
@@ -108,6 +109,12 @@
             bottom: -1px;
             right: -40px;
         }
-    }
-    
+    }  
+}
+
+.show {
+    display: flex;
+}
+.hide {
+    display: none;
 }
