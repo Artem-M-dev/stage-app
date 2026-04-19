@@ -1,8 +1,10 @@
 .digital {
     padding: 20px 20px 40px 20px;
     &__title {
+        font-family: "Forum";
         font-size: 40px;
         text-align: center;
+        letter-spacing: 2px;
         &::after {
             content: '';
             display: block;
@@ -35,7 +37,11 @@
                 flex-direction: column;
                 row-gap: 25px;
                 font-size: 30px;
+                p {
+                    font-family: "Forum";
+                }
                 input {
+                    font-family: "Forum";
                     padding: 8px 0 8px 20px;
                     outline: none;
                     border: none;
@@ -81,6 +87,7 @@
             }
         }
         &-title {
+            font-family: "Forum";
             font-size: 30px;
             letter-spacing: 2px;
         }

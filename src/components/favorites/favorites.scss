@@ -1,8 +1,10 @@
 .favorites {
     padding: 20px 20px 40px 20px;
     &__title {
+        font-family: "Forum";
         font-size: 40px;
         text-align: center;
+        letter-spacing: 2px;
         &::after {
             content: '';
             display: block;
@@ -54,11 +56,14 @@
         padding: 0 40px 0 0;
     }
     &__book {
+        display: flex;
+        flex-direction: column;
         position: relative;
         border: 1px solid black;
         padding: 15px 20px;
         width: 590px;
         &-type {
+            font-family: "Forum";
             font-size: 20px;
             &::after {
                 content: '';
@@ -74,6 +79,7 @@
             font-weight: bold;
             line-height: 40px;
             font-size: 15px;
+            letter-spacing: 2px;
         }
         &-description {
             margin-top: 20px;
@@ -81,16 +87,21 @@
             width: 320px;
             text-transform: capitalize;
             font-size: 15px;
+            letter-spacing: 2px;
         }
         &-buy {
-            margin-top: 20px;
+            margin-top: auto;
             width: 75px;
             height: 30px;
             text-align: center;
             background-color: transparent;
             border: 1px solid black;
             border-radius: 2px;
+            font-size: 10px;
             cursor: pointer;
+        }
+        #mt20 {
+            margin-top: 20px
         }
         &-image {
             position: absolute;

@@ -33,7 +33,7 @@ const Favorites = () => {
                     <p className="favorites__book-type">Staff Picks</p>
                     <h3 className="favorites__book-title">The Book Eaters <br />By Sunyi Dean</h3>
                     <p className="favorites__book-description">An unusual sci-fi story about a book eater woman who tries desperately to save her dangerous mind-eater son from tradition and certain death. Complete with dysfunctional family values, light Sapphic romance, and a strong, complex protagonist. Not for the faint of heart.</p>
-                    <button className="favorites__book-buy">Buy</button>
+                    <button id="mt20" className="favorites__book-buy">Buy</button>
                     <img className="favorites__book-image" src={book1} alt="book" />
                 </div>
                 <div className="favorites__book">
@@ -47,7 +47,7 @@ const Favorites = () => {
                     <p className="favorites__book-type">Staff Picks</p>
                     <h3 className="favorites__book-title">Dante: Poet of the Secular World <br />By Erich Auerbach</h3>
                     <p className="favorites__book-description">Auerbach's engaging book places the 'Comedy' within the tradition of epic, tragedy, and philosophy in general, arguing for Dante's uniqueness as one who raised the individual and his drama of soul into something of divine significance—an inspired introduction to Dante's main themes.</p>
-                    <button className="favorites__book-buy">buy</button>
+                    <button id="mt20" className="favorites__book-buy">buy</button>
                     <img className="favorites__book-image" src={book3} alt="book" />
                 </div>
                 <div className="favorites__book">

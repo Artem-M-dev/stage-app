@@ -4,7 +4,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    h2 {
+    &__title {
+        font-family: "Forum";
         color: white;
         font-size: 30px;
     }
@@ -13,6 +14,9 @@
         align-items: center;
         column-gap: 30px;
         font-size: 20px;
+        a {
+            font-weight: 300;
+        }
         img {
             margin-left: 10px;
             width: 28px;
