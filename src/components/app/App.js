@@ -9,20 +9,24 @@ import Contacts from '../contacts/Contacts';
 import Digital from '../digital/Digital';
 import Footer from '../footer/Footer';
 
+import { Component } from 'react';
 
-const App = () => {
-    return (
-        <div>
-            <Header/>
-            <Welcome/>
-            <About/>
-            <Favorites/>
-            <Coffee/>
-            <Contacts/>
-            <Digital/>
-            <Footer/>
-        </div>
-    )
+
+class App extends Component {
+    render() {
+        return (
+            <div>
+                <Header/>
+                <Welcome/>
+                <About/>
+                <Favorites/>
+                <Coffee/>
+                <Contacts/>
+                <Digital/>
+                <Footer/>
+            </div>
+        )
+    }
 }
 
 export default App;
