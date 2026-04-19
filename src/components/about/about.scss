@@ -20,11 +20,14 @@
         letter-spacing: 2px;
     }
     &__images {
+        width: 100%;
         display: flex;
-        overflow: hidden;
         column-gap: 30px;
-        width: calc(100% - 40px);
-        margin: 20px auto 0 auto;
+        &-wrapper {
+            overflow: hidden;
+            width: calc(100% - 40px);
+            margin: 20px auto 0 auto;
+        }
         img {
             width: calc((100% - 60px) / 3);
             flex-shrink: 0;
