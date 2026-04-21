@@ -46,23 +46,6 @@ class Favorites extends Component {
                             </div>
                         ))
                     }
-
-                    {/* <div className="favorites__tab">
-                        <div className="tab__circle tab__circle-active"></div>
-                        <p className="tab__title tab__title-active">Winter</p>
-                    </div>
-                    <div className="favorites__tab">
-                        <div className="tab__circle"></div>
-                        <p className="tab__title">Spring</p>
-                    </div>
-                    <div className="favorites__tab">
-                        <div className="tab__circle"></div>
-                        <p className="tab__title">Summer</p>
-                    </div>
-                    <div className="favorites__tab">
-                        <div className="tab__circle"></div>
-                        <p className="tab__title">Autumn</p>
-                    </div> */}
                 </div>
 
                 {type === 'winter' ? <Winter/> : null}
