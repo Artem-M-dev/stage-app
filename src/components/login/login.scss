@@ -1,0 +1,73 @@
+.login {
+    position: absolute;
+    top: 50%;
+    right: 42%;
+    transform: translate(0, -50%);
+    background-color: white;
+    width: 250px;
+    padding: 20px 25px;
+    &__header {
+        font-family: 'Forum';
+        font-size: 20px;
+        letter-spacing: 2px;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        text-align: center;
+    }
+    &__close {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        cursor: pointer;
+        &-top {
+            width: 21px;
+            height: 3px;
+            background-color: black;
+            rotate: 45deg;
+            transform: translateX(2px);
+        }
+        &-bottom {
+            width: 21px;
+            height: 3px;
+            background-color: black;
+            rotate: 135deg;
+            transform: translateX(-2px);
+        }
+    }
+    &__input {
+        margin-top: 10px;
+        h3 {
+            font-size: 15px;
+        }
+        input {
+            margin-top: 10px;
+            padding: 0 5px;
+            width: 200px;
+            height: 20px;
+            border: 1px solid #BB945F;
+            outline: none;
+        }
+    }
+    &__button {
+        margin-top: 20px;
+        width: 75px;
+        height: 30px;
+        background-color: transparent;
+        border: 1px solid black;
+        border-radius: 2px;
+        font-size: 10px;
+        letter-spacing: 1px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+    &__reg {
+        margin-top: 10px;
+        font-size: 10px;
+        font-weight: 300;
+        span {
+            text-decoration: underline;
+            font-weight: 600;
+            cursor: pointer;
+        }
+    }
+}
