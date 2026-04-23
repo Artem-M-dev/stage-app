@@ -1,0 +1,111 @@
+.profile {
+    width: 600px;
+    display: flex;
+    &__head {
+        font-family: 'Forum';
+        font-size: 40px;
+        text-transform: uppercase;
+    }
+    &__close {
+        position: absolute;
+        top: 25px;
+        right: 25px;
+        cursor: pointer;
+        &-top {
+            width: 21px;
+            height: 3px;
+            background-color: black;
+            rotate: 45deg;
+            transform: translateX(2px);
+        }
+        &-bottom {
+            width: 21px;
+            height: 3px;
+            background-color: black;
+            rotate: 135deg;
+            transform: translateX(-2px);
+        }
+    }
+    &__name {
+        background-color: black;
+        width: 170px;
+        height: 400px;
+        &-short {
+            margin: 140px auto 0 auto;
+            background-color: white;
+            width: 80px;
+            height: 80px;
+            padding: 27px 30px;
+            color: #BB945F;
+            font-size: 20px;
+        }
+        &-full {
+            margin: 15px auto 0 auto;
+            font-size: 20px;
+            width: 120px;
+            height: 30px;
+            padding: 5px 15px;
+            background-color: white;
+            color: black;
+        }
+    }
+    &__info {
+        position: relative;
+        margin-left: 20px;
+        padding: 25px 60px 40px 0;
+        &-icons {
+            margin-top: 40px;
+            display: flex;
+            column-gap: 20px;
+        }
+        &-icon {
+            display: flex;
+            flex-direction: column;
+            row-gap: 10px;
+            img {
+                width: 20px;
+                height: 21px;
+                margin: 0 auto;
+            }
+            .info__icon-name {
+                font-size: 20px;
+                text-transform: capitalize;
+            }
+            .info__icon-count {
+                font-size: 10px;
+                font-weight: 300;
+                text-align: center;
+            }
+        }
+        &-books {
+            margin-top: 20px;
+            p {
+                font-size: 25px;
+            }
+            ul {
+                margin-top: 30px;
+                display: flex;
+                flex-direction: column;
+                row-gap: 10px;
+                li {
+                    font-size: 19px;
+                    letter-spacing: 2px;
+                }
+            }
+        }
+        &-number {
+            margin-top: 40px;
+            display: flex;
+            column-gap: 15px;
+            img {
+                cursor: pointer;
+            }
+            p {
+                font-size: 20px;
+                span {
+                    color: #BB945F
+                }
+            }
+        }
+    }
+}

@@ -8,6 +8,7 @@ import Coffee from '../coffee/Coffee';
 import Contacts from '../contacts/Contacts';
 import Digital from '../digital/Digital';
 import Footer from '../footer/Footer';
+import Profile from '../profile/Profile';
 
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
             <Coffee/>
             <Contacts/>
             <Digital/>
+            {/* <Profile/> */}
             <Footer/>
         </div>
     )
