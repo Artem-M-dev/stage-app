@@ -9,6 +9,7 @@ import Contacts from '../contacts/Contacts';
 import Digital from '../digital/Digital';
 import Footer from '../footer/Footer';
 import Profile from '../profile/Profile';
+import Buy from '../buy/Buy';
 
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
             <Welcome/>
             <About/>
             <Favorites/>
+            {/* <Buy/> */}
             <Coffee/>
             <Contacts/>
             <Digital/>
