@@ -1,0 +1,106 @@
+.buy {
+    width: 650px;
+    &__head {
+        position: relative;
+        color: white;
+        background-color: black;
+        width: 100%;
+        padding: 10px 0;
+        h2 {
+            font-size: 40px;
+            font-family: "Forum";
+            text-align: center;
+            text-transform: uppercase;
+        }
+    }
+    &__close {
+        position: absolute;
+        top: 28px;
+        right: 25px;
+        cursor: pointer;
+        &-top {
+            width: 21px;
+            height: 3px;
+            background-color: white;
+            rotate: 45deg;
+            transform: translateX(2px);
+        }
+        &-bottom {
+            width: 21px;
+            height: 3px;
+            background-color: white;
+            rotate: 135deg;
+            transform: translateX(-2px);
+        }
+    }
+    &__main {
+        padding: 30px 40px 40px 40px;
+        display: flex;
+        column-gap: 40px;
+    }
+    &__payment {
+        &-name {
+            font-size: 15px;
+        }
+        &-expiration {
+            margin-top: 10px;
+            div {
+                display: flex;
+                margin-top: 10px;
+                column-gap: 10px;
+                input {
+                    width: 45px;
+                    height: 20px;
+                    outline: none;
+                    border: 1px solid #BB945F;
+                }
+            }
+        }
+        &-cvc {
+            margin-top: 10px;
+            input {
+                width: 45px;
+                height: 20px;
+            }
+        }
+        &-input {
+            input {
+                margin-top: 10px;
+                outline: none;
+                border: 1px solid #BB945F;
+
+            }
+        }
+        .payment__second {
+            margin-top: 20px;
+            .buy__payment-input {
+                margin-top: 10px;
+            }
+        }
+        &-btn {
+            display: flex;
+            align-items: center;
+            column-gap: 25px;
+            margin-top: 20px;
+            p {
+                font-weight: 600;
+                font-size: 20px;
+            };
+            button {
+                width: 75px;
+                height: 30px;
+                background-color: transparent;
+                border: 1px solid black;
+                font-size: 10px;
+                cursor: pointer;
+                border-radius: 2px;
+            }
+        }
+    }
+    &__text {
+        color: #8E8E8E;
+        letter-spacing: 2px;
+        line-height: 20px;
+        font-weight: 300;
+    }
+}

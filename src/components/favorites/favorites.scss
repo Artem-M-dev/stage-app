@@ -23,10 +23,10 @@
         margin-top: 40px;
         display: flex;
         column-gap: 90px;
-        cursor: pointer;
         .favorites__tab {
             display: flex;
             column-gap: 20px;
+            cursor: pointer;
             .tab__circle {
                 width: 17px;
                 height: 17px;
@@ -55,6 +55,7 @@
         justify-content: space-between;
         row-gap: 40px;
         padding: 0 40px 0 0;
+        transition: all 0.5s ease-in-out;
     }
     &__book {
         display: flex;
@@ -63,6 +64,7 @@
         border: 1px solid black;
         padding: 15px 20px;
         width: 590px;
+        height: 555px;
         &-type {
             font-family: "Forum";
             font-size: 20px;
@@ -83,9 +85,9 @@
             letter-spacing: 2px;
         }
         &-description {
-            margin-top: 20px;
+            margin: 20px 0;
             line-height: 40px;
-            width: 320px;
+            width: 350px;
             text-transform: capitalize;
             font-size: 15px;
             letter-spacing: 2px;
@@ -101,15 +103,12 @@
             font-size: 10px;
             cursor: pointer;
         }
-        #mt20 {
-            margin-top: 20px
-        }
         &-image {
             position: absolute;
             bottom: -1px;
             right: -40px;
         }
-    }  
+    }   
 }
 
 .show {
