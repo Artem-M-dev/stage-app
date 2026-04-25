@@ -44,7 +44,10 @@ class Header extends Component {
         const {modal} = this.state;
 
         const log = modal === 'login' ? <Login showModal={this.showModal} closeModal={this.closeModal}/> : null;
-        const register = modal === 'register' ? <Register showModal={this.showModal} closeModal={this.closeModal}/> : null;
+        const register = modal === 'register' ? <Register
+                                                    changeUserData={this.props.changeUserData}
+                                                    showModal={this.showModal} 
+                                                    closeModal={this.closeModal}/> : null;
         const content = <View 
                             state={this.state} 
                             onChange={this.onChange}

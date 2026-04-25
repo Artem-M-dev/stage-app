@@ -15,12 +15,38 @@ import { Component } from 'react';
 
 
 class App extends Component {
+    
+    state = {
+        userData: {
+            firstName: '',
+            lastName: '',
+            email: '',
+            password: '',
+            id: null
+        }
+    }
+
+    changeUserData = (e, data) => {
+        e.preventDefault();
+        this.setState((prevState) => ({
+            userData: {
+                ...prevState.userData,
+                ...data,
+                id: Math.floor(Math.random() * 100000000)
+            }
+        }))
+
+        console.log(this.state.userData);
+    }
+
     render() {
         return (
             <div>
-                <Header/>
+                <Header 
+                    user={this.state.userData}
+                    changeUserData={this.changeUserData}/>
                 <Welcome/>
-                {/* <Profile/> */}
+                {/* <Profile user={this.state.userData}/> */}
                 <About/>
                 <Favorites/>
                 {/* <Buy/> */}
