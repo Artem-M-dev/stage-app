@@ -11,11 +11,33 @@ import Footer from '../footer/Footer';
 import Profile from '../profile/Profile';
 import Buy from '../buy/Buy';
 
+import { useState } from 'react';
 
 const App = () => {
+    
+    let userData = {
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+        id: Math.floor(Math.random() * 100000000)
+    };
+
+    const changeUserData = (e, data) => {
+        e.preventDefault();
+
+        userData = {
+            ...userData,
+            ...data,
+            id: Math.floor(Math.random() * 100000000)
+        };
+
+        console.log(userData);
+    }
+
     return (
         <div>
-            <Header/>
+            <Header changeUserData={changeUserData}/>
             <Welcome/>
             <About/>
             <Favorites/>

@@ -5,9 +5,11 @@ import Login from '../login/Login';
 import profile from '../../icons/header/HeaderProfile.svg';
 import { useState } from 'react';
 
-const Header = () => {
+const Header = (props) => {
     const [show, setShow] = useState('icon');
     const [modal, setModal] = useState(null);
+
+    const {changeUserData} = props;
 
     const closeModal = () => {
         setShow('icon');
@@ -15,7 +17,10 @@ const Header = () => {
     }
 
     const log = modal === 'login' ? <Login setModal={setModal} closeModal={closeModal}/> : null;
-    const register = modal === 'register' ? <Register setModal={setModal} closeModal={closeModal}/> : null;
+    const register = modal === 'register' ? <Register 
+                                                changeUserData={changeUserData}
+                                                setModal={setModal} 
+                                                closeModal={closeModal}/> : null;
     const content = <View 
                         setModal={setModal} 
                         setShow={setShow} 
