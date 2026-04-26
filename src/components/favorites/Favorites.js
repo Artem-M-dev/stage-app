@@ -1,14 +1,11 @@
 import './favorites.scss';
 
 import { useState } from 'react';
-import Winter from '../cards/Winter';
-import Spring from '../cards/Spring';
-import Summer from '../cards/Summer';
-import Autumn from '../cards/Autumn';
-
+import { useEffect } from 'react';
 
 const Favorites = () => {
     const [type, setType] = useState('winter');
+    const [cards, setCards] = useState({});
 
     const tabs = [
         {id: "winter", label: "Winter"},
@@ -20,6 +17,37 @@ const Favorites = () => {
     const onChange = (tabType) => {
         setType(tabType)
     }
+
+    useEffect(() => {
+        requireCards();
+    }, [])
+
+    const requireCards = async () => {
+        try {
+            const res = await fetch('http://localhost:3001/books');
+            const data = await res.json();
+
+            setCards(data[0]);
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    const renderElements = (elements) => {
+        if (!elements) return null
+
+        return elements.map(elem => (
+            <div key={elem.id} className="favorites__book">
+                <p className="favorites__book-type">{elem.type}</p>
+                <h3 className="favorites__book-title">{elem.title}<br />{elem.author}</h3>
+                <p className="favorites__book-description">{elem.description}</p>
+                <button className="favorites__book-buy">Buy</button>
+                <img className="favorites__book-image" src={elem.image} alt="book" />
+            </div>
+        ))
+    }
+
+    const elements = renderElements(cards[type])
 
     return (
         <div className="favorites">
@@ -43,10 +71,9 @@ const Favorites = () => {
                     })
                 }
             </div>
-            {type === 'winter' ? <Winter/> : null}
-            {type === 'spring' ? <Spring/> : null}
-            {type === 'summer' ? <Summer/> : null}
-            {type === 'autumn' ? <Autumn/> : null}
+            <div className="favorites__books">
+                {elements}
+            </div>
         </div>
     )
 }
