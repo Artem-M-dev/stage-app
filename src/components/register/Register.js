@@ -81,8 +81,23 @@ const Register = (props) => {
         }
     }
 
+    const handlerSubmit = (e) => {
+        changeUserData(e, user);
+        setErrors({
+            firstname: '',
+            lastname: '',
+            email: '',
+            password: ''
+        });
+
+        setFirstName('');
+        setLastName('');
+        setEmail('');
+        setPassword('');
+    }
+
     return (
-        <form onSubmit={(e) => changeUserData(e, user)} className="register">
+        <form onSubmit={(e) => handlerSubmit(e)} className="register">
             <h2 className="register__header">Register</h2>
             <div onClick={closeModal} className="register__close">
                 <div className="register__close-top"></div>
@@ -93,6 +108,7 @@ const Register = (props) => {
                 <input 
                     required 
                     data-field="firstname"
+                    value={firstName}
                     onChange={(e) => registerHandler(e)} 
                     style={errors.firstname ? {border: '1px solid red'} : null}
                     type="text" />
@@ -107,6 +123,7 @@ const Register = (props) => {
                 <input 
                     required 
                     data-field="lastname"
+                    value={lastName}
                     onChange={(e) => registerHandler(e)} 
                     style={errors.lastname ? {border: '1px solid red'} : null}
                     type="text" />
@@ -121,6 +138,7 @@ const Register = (props) => {
                 <input 
                     required 
                     data-field="email"
+                    value={email}
                     onChange={(e) => registerHandler(e)} 
                     style={errors.email ? {border: '1px solid red'} : null}
                     type="text" />
@@ -135,6 +153,7 @@ const Register = (props) => {
                 <input 
                     required 
                     data-field="password"
+                    value={password}
                     onChange={(e) => registerHandler(e)} 
                     style={errors.password ? {border: '1px solid red'} : null}
                     type="text" />
