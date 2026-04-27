@@ -1,6 +1,7 @@
 import './register.scss';
 
 import { useState } from 'react';
+// import validator from 'validator';
 
 const Register = (props) => {
     const [firstName, setFirstName] = useState('');
@@ -8,14 +9,22 @@ const Register = (props) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const [errors, setErrors] = useState({
+        firstname: '',
+        lastname: '',
+        email: '',
+        password: ''
+    });
+
     const {setModal, closeModal, changeUserData} = props;
 
-    const registerHandler = (e, trigger) => {
+    const registerHandler = (e) => {
         const value = e.target.value
+        const typeField = e.target.getAttribute('data-field')
 
-        switch (trigger) {
+        switch (typeField) {
             case "firstname":
-                setFirstName(value)
+                setFirstName(value);
                 break;
             case "lastname":
                 setLastName(value);
@@ -26,7 +35,18 @@ const Register = (props) => {
             case "password":
                 setPassword(value);
                 break;
+            default:
+                return
         }
+
+        const errorMessage = validation(typeField, value);
+        console.log(`${typeField}: ${errorMessage}`);
+
+        setErrors(prev => ({
+            ...prev,
+            [typeField]: errorMessage
+        }))
+
     }
 
     const user = {
@@ -34,6 +54,31 @@ const Register = (props) => {
         lastName,
         email,
         password
+    };
+
+    const validation = (name, value) => {
+        switch (name) {
+            case "firstname":
+            case "lastname":
+                if (/[^a-zA-Z]/.test(value)) return 'This field should consist only of letters!'
+                if (value.length < 2) return 'This field must be longer than 2 characters...';
+                if (value.length > 25) return 'This field is too long';
+                return '';
+            case "email":
+                if (!/^[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-Z]+$/.test(value)) return 'Invalid Email...'
+                return '';
+            case "password":
+                if (value.length < 8) return 'The password must be longer than 8 characters...';
+                // Проверка на спец. символы
+                if (!/[!@#$%]/.test(value)) return 'The password must contain special characters !@#$%';
+                // Проверка на англ буквы
+                if (!/[A-Za-z]/.test(value)) return 'The password must contain letters...';
+                // Проверка на цифры
+                if (!/[0-9]/.test(value)) return 'The password must contain numbers...';
+                return '';
+            default:
+                return '';
+        }
     }
 
     return (
@@ -45,19 +90,59 @@ const Register = (props) => {
             </div>
             <div className="register__input">
                 <h3>First name</h3>
-                <input onChange={(e) => registerHandler(e, 'firstname')} type="text" />
+                <input 
+                    required 
+                    data-field="firstname"
+                    onChange={(e) => registerHandler(e)} 
+                    style={errors.firstname ? {border: '1px solid red'} : null}
+                    type="text" />
+                    {errors.firstname && (
+                        <div style={{color: 'red', fontSize: '10px'}}>
+                            {errors.firstname}
+                        </div>
+                    )}
             </div>
             <div className="register__input">
                 <h3>Last name</h3>
-                <input onChange={(e) => registerHandler(e, 'lastname')} type="text" />
+                <input 
+                    required 
+                    data-field="lastname"
+                    onChange={(e) => registerHandler(e)} 
+                    style={errors.lastname ? {border: '1px solid red'} : null}
+                    type="text" />
+                    {errors.lastname && (
+                        <div style={{color: 'red', fontSize: '10px'}}>
+                            {errors.lastname}
+                        </div>
+                    )}
             </div>
             <div className="register__input">
                 <h3>E-mail</h3>
-                <input onChange={(e) => registerHandler(e, 'email')} type="text" />
+                <input 
+                    required 
+                    data-field="email"
+                    onChange={(e) => registerHandler(e)} 
+                    style={errors.email ? {border: '1px solid red'} : null}
+                    type="text" />
+                    {errors.email && (
+                        <div style={{color: 'red', fontSize: '10px'}}>
+                            {errors.email}
+                        </div>
+                    )}
             </div>
             <div className="register__input">
                 <h3>Password</h3>
-                <input onChange={(e) => registerHandler(e, 'password')} type="text" />
+                <input 
+                    required 
+                    data-field="password"
+                    onChange={(e) => registerHandler(e)} 
+                    style={errors.password ? {border: '1px solid red'} : null}
+                    type="text" />
+                    {errors.password && (
+                        <div style={{color: 'red', fontSize: '10px'}}>
+                            {errors.password}
+                        </div>
+                    )}
             </div>
             <button type="submit" className="register__button">Sign Up</button>
             <p className="register__reg">Already have an account? <span onClick={() => setModal('login')}>Login</span></p>
