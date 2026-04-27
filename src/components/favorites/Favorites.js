@@ -29,7 +29,8 @@ const Favorites = () => {
 
             setCards(data[0]);
         } catch (err) {
-            console.log(err);
+            console.error(err);
+            throw err
         }
     };
 

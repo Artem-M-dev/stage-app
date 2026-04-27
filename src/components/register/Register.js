@@ -81,8 +81,34 @@ const Register = (props) => {
         }
     }
 
-    const handlerSubmit = (e) => {
-        changeUserData(e, user);
+    const postUser = async (user) => {
+        try {
+            const response = await fetch('http://localhost:3001/users', {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8'
+                },
+                body: JSON.stringify(user)
+            })
+
+            if (!response.ok) {
+                throw new Error('Failed to send data...');
+            }
+
+            console.log(user);
+
+        } catch (err) {
+            console.error(err)
+            throw err
+        }
+    }
+
+    const handlerSubmit = async (e) => {
+        e.preventDefault();
+
+        await postUser(user);
+        changeUserData(user);
+
         setErrors({
             firstname: '',
             lastname: '',
