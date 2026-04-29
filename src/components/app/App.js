@@ -22,7 +22,6 @@ class App extends Component {
             lastName: '',
             email: '',
             password: '',
-            id: null
         }
     }
 
@@ -30,8 +29,7 @@ class App extends Component {
         this.setState((prevState) => ({
             userData: {
                 ...prevState.userData,
-                ...data,
-                id: Math.floor(Math.random() * 100000000)
+                ...data
             }
         }), () => {
             console.log(this.state.userData);
@@ -41,8 +39,7 @@ class App extends Component {
     render() {
         return (
             <div>
-                <Header 
-                    user={this.state.userData}
+                <Header
                     changeUserData={this.changeUserData}/>
                 <Welcome/>
                 {/* <Profile user={this.state.userData}/> */}

@@ -79,9 +79,30 @@ class Register extends Component {
         }
     }
 
-    handlerRegister = (e, user) => {
+    postUser = async (user) => {
+        try {
+            const response = await fetch('http://localhost:3001/users', {
+                method: "POST",
+                headers: {
+                    'Content-type': 'application/json;charset=utf-8'
+                },
+                body: JSON.stringify(user)
+            })
+
+            if (!response.ok) {
+                throw new Error('Failed to send data...');
+            }
+            
+        } catch (err) {
+            console.error(err);
+            throw err
+        }
+    }
+
+    handlerSubmit = async (e, user) => {
         e.preventDefault();
 
+        await this.postUser(user);
         this.props.changeUserData(user)
 
         this.setState({
@@ -111,7 +132,7 @@ class Register extends Component {
         };
 
         return (
-            <form onSubmit={(e) => this.handlerRegister(e, user)} className="register">
+            <form onSubmit={(e) => this.handlerSubmit(e, user)} className="register">
                 <h2 className="register__header">Register</h2>
                 <div onClick={closeModal} className="register__close">
                     <div className="register__close-top"></div>
