@@ -26,17 +26,16 @@ class App extends Component {
         }
     }
 
-    changeUserData = (e, data) => {
-        e.preventDefault();
+    changeUserData = (data) => {    
         this.setState((prevState) => ({
             userData: {
                 ...prevState.userData,
                 ...data,
                 id: Math.floor(Math.random() * 100000000)
             }
-        }))
-
-        console.log(this.state.userData);
+        }), () => {
+            console.log(this.state.userData);
+        })
     }
 
     render() {

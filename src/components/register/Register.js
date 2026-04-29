@@ -79,8 +79,29 @@ class Register extends Component {
         }
     }
 
+    handlerRegister = (e, user) => {
+        e.preventDefault();
+
+        this.props.changeUserData(user)
+
+        this.setState({
+            firstName: '',
+            lastName: '',
+            email: '',
+            password: '',
+            errors: {
+                firstname: '',
+                lastname: '',
+                email: '',
+                password: '',
+            }
+        })
+
+
+    }
+
     render() {
-        const {closeModal, showModal, changeUserData} = this.props;
+        const {closeModal, showModal} = this.props;
         const {firstname, lastname, email, password} = this.state.errors;
         const user = {
             firstName: this.state.firstName,
@@ -90,7 +111,7 @@ class Register extends Component {
         };
 
         return (
-            <form onSubmit={(e) => changeUserData(e, user)} className="register">
+            <form onSubmit={(e) => this.handlerRegister(e, user)} className="register">
                 <h2 className="register__header">Register</h2>
                 <div onClick={closeModal} className="register__close">
                     <div className="register__close-top"></div>
@@ -102,6 +123,7 @@ class Register extends Component {
                         data-field="firstname"
                         onChange={(e) => this.registerHandler(e)} 
                         style={firstname ? {border: "1px solid red"} : null}
+                        value={this.state.firstName}
                         type="text"
                         required/>
                         {firstname && (
@@ -116,6 +138,7 @@ class Register extends Component {
                     data-field="lastname"
                         onChange={(e) => this.registerHandler(e)} 
                         style={lastname ? {border: "1px solid red"} : null}
+                        value={this.state.lastName}
                         type="text"
                         required/>
                         {lastname && (
@@ -130,6 +153,7 @@ class Register extends Component {
                         data-field="email"
                         onChange={(e) => this.registerHandler(e)} 
                         style={email ? {border: "1px solid red"} : null}
+                        value={this.state.email}
                         type="text"
                         required/>
                         {email && (
@@ -144,6 +168,7 @@ class Register extends Component {
                         data-field="password"
                         onChange={(e) => this.registerHandler(e)} 
                         style={password ? {border: "1px solid red"} : null}
+                        value={this.state.password}
                         type="text"
                         required/>
                         {password && (
