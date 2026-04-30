@@ -43,7 +43,10 @@ class Header extends Component {
     render() {
         const {modal} = this.state;
 
-        const log = modal === 'login' ? <Login showModal={this.showModal} closeModal={this.closeModal}/> : null;
+        const log = modal === 'login' ? <Login 
+                                            changeUserData={this.props.changeUserData}
+                                            showModal={this.showModal} 
+                                            closeModal={this.closeModal}/> : null;
         const register = modal === 'register' ? <Register
                                                     changeUserData={this.props.changeUserData}
                                                     showModal={this.showModal} 
