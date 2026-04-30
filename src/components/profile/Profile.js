@@ -9,11 +9,16 @@ import { Component } from 'react';
 
 class Profile extends Component {
     render() {
+        const {user} = this.props
+
         return (
             <div className="profile">
                 <div className="profile__name">
-                    <div className="profile__name-short">JD</div>
-                    <div className="profile__name-full">John Doe</div>
+                    <div className="profile__name-short">
+                        {user.firstName && user.lastName ? 
+                        `${user.firstName.slice(0, 1)}${user.lastName.slice(0, 1)}` : ''}
+                    </div>
+                    <div className="profile__name-full">{user.firstName}</div>
                 </div>
                 <div className="profile__info">
                     <div className="profile__close">
@@ -25,28 +30,31 @@ class Profile extends Component {
                         <div className="profile__info-icon">
                             <p className="info__icon-name">visits</p>
                             <img src={union} alt="" />
-                            <p className="info__icon-count">23</p>
+                            <p className="info__icon-count">{user.visites}</p>
                         </div>
                         <div className="profile__info-icon">
                             <p className="info__icon-name">bonuses</p>
                             <img src={star} alt="" />
-                            <p className="info__icon-count">1240</p>
+                            <p className="info__icon-count">{user.bonuses}</p>
                         </div>
                         <div className="profile__info-icon">
                             <p className="info__icon-name">books</p>
                             <img src={book} alt="" />
-                            <p className="info__icon-count">2</p>
+                            <p className="info__icon-count">{user.books ? user.books.length: ''}</p>
                         </div>
                     </div>
                     <div className="profile__info-books">
                         <p>Rented books</p>
                         <ul>
-                            <li>The Last Queen, Clive Irving</li>
-                            <li>Dominicana, Angie Cruz</li>
+                            {user.books && (
+                                user.books.map(book => (
+                                    <li>{book}</li>
+                                ))
+                            )}
                         </ul>
                     </div>
                     <div className="profile__info-number">
-                        <p>Card number <span>F00234030</span></p>
+                        <p>Card number <span>{user.id}</span></p>
                         <img src={copy} alt="" />
                     </div>
                 </div>

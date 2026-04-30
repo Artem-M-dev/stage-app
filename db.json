@@ -161,22 +161,34 @@
       "firstName": "Artem",
       "lastName": "Maksimov",
       "email": "turbostanci4544@gmail.com",
-      "password": "fasdf!af3",
-      "id": "QX_cJkfZLdM"
+      "password": "12312@@s",
+      "books": [
+        "The Last Queen, Clive Irving",
+        "Dominicana, Angie Cruz"
+      ],
+      "visites": 0,
+      "bonuses": 0,
+      "id": "FJzWTPnYiFs"
     },
     {
       "firstName": "fa",
       "lastName": "adafdad",
       "email": "fad@gmail.com",
-      "password": "asf111@af",
-      "id": "deJXJB2CJoE"
+      "password": "12112!!fd",
+      "books": [],
+      "visites": 0,
+      "bonuses": 0,
+      "id": "IxeKH-CHnxE"
     },
     {
-      "firstName": "Ben",
-      "lastName": "Huesos",
-      "email": "asdf@g.com",
-      "password": "saf11!!ere",
-      "id": "gV4XWzvhQGo"
+      "firstName": "afaf",
+      "lastName": "asdfas",
+      "email": "fad@gmail.com",
+      "password": "122112##d",
+      "books": [],
+      "visites": 0,
+      "bonuses": 0,
+      "id": "go2sje77UjI"
     }
   ]
 }

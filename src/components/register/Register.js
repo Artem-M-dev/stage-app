@@ -92,6 +92,9 @@ class Register extends Component {
             if (!response.ok) {
                 throw new Error('Failed to send data...');
             }
+
+            const data = await response.json();
+            return data
             
         } catch (err) {
             console.error(err);
@@ -102,8 +105,8 @@ class Register extends Component {
     handlerSubmit = async (e, user) => {
         e.preventDefault();
 
-        await this.postUser(user);
-        this.props.changeUserData(user)
+        const fullUser = await this.postUser(user)
+        this.props.changeUserData(fullUser)
 
         this.setState({
             firstName: '',
@@ -129,6 +132,9 @@ class Register extends Component {
             lastName: this.state.lastName,
             email: this.state.email,
             password: this.state.password,
+            books: [],
+            visites: 0,
+            bonuses: 0
         };
 
         return (

@@ -22,6 +22,9 @@ class App extends Component {
             lastName: '',
             email: '',
             password: '',
+            books: null,
+            visites: null,
+            bonuses: null,
         }
     }
 
@@ -42,10 +45,10 @@ class App extends Component {
                 <Header
                     changeUserData={this.changeUserData}/>
                 <Welcome/>
-                {/* <Profile user={this.state.userData}/> */}
+                <Profile user={this.state.userData}/>
                 <About/>
                 <Favorites/>
-                {/* <Buy/> */}
+                <Buy/>
                 <Coffee/>
                 <Contacts/>
                 <Digital/>
