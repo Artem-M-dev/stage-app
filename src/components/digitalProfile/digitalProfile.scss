@@ -1,0 +1,129 @@
+.digitalProfile {
+    padding: 20px 20px 40px 20px;
+    &__title {
+        font-family: "Forum";
+        font-size: 40px;
+        text-align: center;
+        letter-spacing: 2px;
+        &::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 1px;
+            background-color: black;
+            margin: 20px auto 0 auto;
+        }
+    }
+    &__wrapper {
+        margin-top: 40px;
+        display: flex;
+        justify-content: space-between;
+    }
+    &__payment {
+        width: 600px;
+        &-title {
+            font-size: 30px;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+        &-window {
+            margin-top: 30px;
+            border: 3px solid #BB945F;
+            padding: 20px 20px 30px 20px;
+            .payment__info {
+                background-color: #BB945F;
+                padding: 20px 20px 25px 20px;
+                display: flex;
+                flex-direction: column;
+                row-gap: 25px;
+                font-size: 30px;
+                p {
+                    font-family: 'Forum';
+                }
+                div {
+                    background-color: white;
+                    font-family: "Forum";
+                    color: #BB945F;
+                    padding: 8px 0 8px 20px;
+                    border: none;
+                    border-radius: 10px;
+                }
+            }
+            .payment__btn {
+                display: block;
+                margin: 0 auto;
+                width: 242px;
+                height: 44px;
+                background-color: transparent;
+                border: 2px solid black;
+                border-radius: 2px;
+                text-align: center;
+                font-weight: bold;
+                font-size: 20px;
+                margin-top: 20px;
+                cursor: pointer
+            }
+        }
+    }
+    &__get {
+        text-align: right;
+        display: flex;
+        flex-direction: column;
+        row-gap: 35px;
+        button {
+            width: 75px;
+            height: 30px;
+            margin-left: auto;
+            border: 2px solid black;
+            border-radius: 2px;
+            background-color: transparent;
+            font-size: 10px;
+            font-weight: bold;
+            text-align: center;
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
+        &-title {
+            font-family: "Forum";
+            font-size: 30px;
+            letter-spacing: 2px;
+        }
+        &-description {
+            width: 456px;
+            font-size: 20px;
+            letter-spacing: 2px;
+            line-height: 40px;
+        }
+    }
+
+    &__info {
+        position: relative;
+        background-color: white;
+        padding: 25px 60px 40px 20px;
+        &-icons {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            column-gap: 20px;
+        }
+        &-icon {
+            display: flex;
+            flex-direction: column;
+            row-gap: 10px;
+            img {
+                width: 20px;
+                height: 21px;
+                margin: 0 auto;
+            }
+            .info__icon-name {
+                font-size: 20px;
+                text-transform: capitalize;
+            }
+            .info__icon-count {
+                font-size: 10px;
+                font-weight: 300;
+                text-align: center;
+            }
+        }
+    }
+}

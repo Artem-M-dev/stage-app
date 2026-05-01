@@ -7,8 +7,8 @@ import Favorites from '../favorites/Favorites';
 import Coffee from '../coffee/Coffee';
 import Contacts from '../contacts/Contacts';
 import Digital from '../digital/Digital';
+import DigitalProfile from '../digitalProfile/DigitalProfile';
 import Footer from '../footer/Footer';
-import Buy from '../buy/Buy';
 
 import { useState } from 'react';
 
@@ -42,10 +42,11 @@ const App = () => {
             <Favorites
                 user={userData}
                 changeUserData={changeUserData}/>
-            {/* <Buy/> */}
             <Coffee/>
             <Contacts/>
-            <Digital/>
+            {userData.firstName && userData.lastName
+            ? <DigitalProfile user={userData}/>
+            : <Digital changeUserData={changeUserData}/>}
             <Footer/>
         </div>
     )
