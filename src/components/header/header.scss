@@ -14,7 +14,7 @@
         align-items: center;
         column-gap: 30px;
         font-size: 20px;
-        margin-right: 80px;
+        margin-right: 100px;
         a {
             font-weight: 300;
         }
@@ -31,6 +31,7 @@
     }
     &__profile {
         position: absolute;
+        width: 80px;
         right: 0;
         top: -8px;
         color: white;

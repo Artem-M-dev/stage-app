@@ -43,9 +43,10 @@ class App extends Component {
         return (
             <div>
                 <Header
+                    user={this.state.userData}
                     changeUserData={this.changeUserData}/>
                 <Welcome/>
-                <Profile user={this.state.userData}/>
+                {/* <Profile user={this.state.userData}/> */}
                 <About/>
                 <Favorites/>
                 <Buy/>

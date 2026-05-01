@@ -5,6 +5,7 @@ import profile from '../../icons/header/HeaderProfile.svg';
 import { Component } from 'react';
 import Login from '../login/Login';
 import Register from '../register/Register';
+import Profile from '../profile/Profile';
 
 class Header extends Component {
 
@@ -19,25 +20,42 @@ class Header extends Component {
         })
     };
 
-    showModal = (type) => {
-        if (type === 'login') {
-            this.setState({
-                modal: 'login'
-            })
-        }
-
-        if (type === 'register') {
-            this.setState({
-                modal: 'register'
-            })
-        }
-    }
-
     closeModal = () => {
         this.setState({
             show: 'icon',
             modal: null
         })
+    }
+
+    showModal = (type) => {
+        if (type === 'first' && (this.props.user.firstName && this.props.user.lastName)) {
+            this.setState(({modal}) => ({
+                modal: 'profile'
+            }))
+        } else if (type === 'first') {
+            this.setState(({modal}) => ({
+                modal: 'login'
+            }))
+        }
+
+        if (type === 'second' && (this.props.user.firstName && this.props.user.lastName)) {
+            this.props.changeUserData({
+                firstName: '',
+                lastName: '',
+                email: '',
+                password: '',
+                books: null,
+                visites: null,
+                bonuses: null,
+            })
+            this.setState(({modal}) => ({
+                modal: null
+            }))
+        } else if (type === 'second') {
+            this.setState(({modal}) => ({
+                modal: 'register'
+            }))
+        }
     }
 
     render() {
@@ -51,7 +69,10 @@ class Header extends Component {
                                                     changeUserData={this.props.changeUserData}
                                                     showModal={this.showModal} 
                                                     closeModal={this.closeModal}/> : null;
+        const profile = modal === 'profile' ? <Profile
+                                                user={this.props.user}/> : null
         const content = <View 
+                            user={this.props.user}
                             state={this.state} 
                             onChange={this.onChange}
                             showModal={this.showModal}/>
@@ -61,6 +82,7 @@ class Header extends Component {
                 {content}
                 {log}
                 {register}
+                {profile}
             </div>
         )
     }
@@ -70,7 +92,7 @@ class Header extends Component {
 class View extends Component {
 
     render() {
-        const {onChange, showModal, state} = this.props;
+        const {onChange, showModal, state, user} = this.props;
 
         return (
             <div className="header">
@@ -97,12 +119,12 @@ class View extends Component {
                                 Profile</p>
                             <p 
                                 className="header__profile-log"
-                                onClick={() => showModal('login')}
-                                >Log In</p>
+                                onClick={() => showModal('first')}
+                                >{user.firstName && user.lastName ? 'My profile' : 'Log in'}</p>
                             <p 
                                 className="header__profile-reg"
-                                onClick={() => showModal('register')}   
-                                >Register</p>
+                                onClick={() => showModal('second')}
+                                >{user.firstName && user.lastName ? 'Log Out' : 'Register'}</p>
                         </div>
                     </div>
                 </div>
