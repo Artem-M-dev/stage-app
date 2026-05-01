@@ -3,7 +3,7 @@ import './favorites.scss';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
-const Favorites = () => {
+const Favorites = (props) => {
     const [type, setType] = useState('winter');
     const [cards, setCards] = useState({});
 
@@ -21,6 +21,20 @@ const Favorites = () => {
     useEffect(() => {
         requireCards();
     }, [])
+
+    const getBook = (book) => {
+        const {user, changeUserData} = props;
+        const {firstName, lastName} = user
+
+        if (firstName && lastName) {
+            console.log(book.title)
+            changeUserData({
+                books: [book.title]
+            })
+        } else {
+            console.log('Пожалуйста, войдите или зарегистрируйтесь перед покупкой.')
+        }
+    }
 
     const requireCards = async () => {
         try {
@@ -42,7 +56,9 @@ const Favorites = () => {
                 <p className="favorites__book-type">{elem.type}</p>
                 <h3 className="favorites__book-title">{elem.title}<br />{elem.author}</h3>
                 <p className="favorites__book-description">{elem.description}</p>
-                <button className="favorites__book-buy">Buy</button>
+                <button 
+                    onClick={() => getBook(elem)}
+                    className="favorites__book-buy">Buy</button>
                 <img className="favorites__book-image" src={elem.image} alt="book" />
             </div>
         ))

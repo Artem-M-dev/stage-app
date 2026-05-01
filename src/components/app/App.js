@@ -27,7 +27,8 @@ const App = () => {
     const changeUserData = (data) => {
         setUserData(prev => ({
             ...prev,
-            ...data
+            ...data,
+            books: [...prev.books, ...data.books]
         }))
     }
 
@@ -38,7 +39,9 @@ const App = () => {
                 changeUserData={changeUserData}/>
             <Welcome/>
             <About/>
-            <Favorites/>
+            <Favorites
+                user={userData}
+                changeUserData={changeUserData}/>
             {/* <Buy/> */}
             <Coffee/>
             <Contacts/>
