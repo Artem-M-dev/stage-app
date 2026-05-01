@@ -16,7 +16,10 @@ const Header = (props) => {
         setModal(null);
     }
 
-    const log = modal === 'login' ? <Login setModal={setModal} closeModal={closeModal}/> : null;
+    const log = modal === 'login' ? <Login 
+                                        changeUserData={changeUserData}
+                                        setModal={setModal} 
+                                        closeModal={closeModal}/> : null;
     const register = modal === 'register' ? <Register 
                                                 changeUserData={changeUserData}
                                                 setModal={setModal} 
