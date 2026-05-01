@@ -7,7 +7,7 @@ import union from '../../icons/profile/ProfileUnion.svg';
 
 
 const Profile = (props) => {
-    const {user} = props;
+    const {user, closeModal} = props;
     const {firstName, lastName, id, books, bonuses, visits} = user
 
     return (
@@ -20,7 +20,7 @@ const Profile = (props) => {
                 <div className="profile__name-full">{firstName}</div>
             </div>
             <div className="profile__info">
-                <div className="profile__close">
+                <div onClick={closeModal} className="profile__close">
                     <div className="profile__close-top"></div>
                     <div className="profile__close-bottom"></div>
                 </div>

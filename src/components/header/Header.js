@@ -1,19 +1,44 @@
 import './header.scss';
 import Register from '../register/Register';
 import Login from '../login/Login';
+import Profile from '../profile/Profile';
 
 import profile from '../../icons/header/HeaderProfile.svg';
 import { useState } from 'react';
 
 const Header = (props) => {
     const [show, setShow] = useState('icon');
-    const [modal, setModal] = useState(null);
+    const [modal, setModal] = useState('');
 
-    const {changeUserData} = props;
+    const {changeUserData, user} = props;
 
     const closeModal = () => {
         setShow('icon');
         setModal(null);
+    }
+
+    const showModal = (type) => {
+        if (type === 'first' && (user.firstName && user.lastName)) {
+            setModal('profile')
+            console.log(modal);
+        } else if (type === 'first') {
+            setModal('login')
+        }
+
+        if (type === 'second' && (user.firstName && user.lastName)) {
+            changeUserData({
+                firstName: '',
+                lastName: '',
+                email: '',
+                password: '',
+                books: [],
+                visites: 0,
+                bonuses: 0,
+            })
+            setModal(null)
+        } else if (type === 'second') {
+            setModal('register')
+        }
     }
 
     const log = modal === 'login' ? <Login 
@@ -24,9 +49,13 @@ const Header = (props) => {
                                                 changeUserData={changeUserData}
                                                 setModal={setModal} 
                                                 closeModal={closeModal}/> : null;
+    const profile = modal === 'profile'? <Profile
+                                            user={user}
+                                            closeModal={closeModal}/> : null
     const content = <View 
-                        setModal={setModal} 
-                        setShow={setShow} 
+                        user={user}
+                        setShow={setShow}
+                        showModal={showModal}
                         show={show}/>
 
     return (
@@ -34,12 +63,14 @@ const Header = (props) => {
             {content}
             {log}
             {register}
+            {profile}
         </div>
     )
 }
 
 const View = (props) => {
-    const {show, setShow, setModal} = props;
+    const {show, setShow, showModal, user} = props;
+    const {firstName, lastName} = user;
 
     return (
         <div className="header">
@@ -62,11 +93,13 @@ const View = (props) => {
                             onClick={() => setShow('icon')}
                             className="header__profile-head">Profile</p>
                         <p  
-                            onClick={() => setModal('login')}
-                            className="header__profile-log">Log In</p>
+                            onClick={() => showModal('first')}
+                            className="header__profile-log"
+                            >{user.firstName && user.lastName ? 'My profile' : 'Log in'}</p>
                         <p  
-                            onClick={() => setModal('register')}
-                            className="header__profile-reg">Register</p>
+                            onClick={() => showModal('second')}
+                            className="header__profile-reg"
+                            >{firstName && lastName ? 'Log Out' : 'Register'}</p>
                     </div>
                 </div>
             </div>
