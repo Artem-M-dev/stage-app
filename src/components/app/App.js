@@ -8,7 +8,6 @@ import Coffee from '../coffee/Coffee';
 import Contacts from '../contacts/Contacts';
 import Digital from '../digital/Digital';
 import Footer from '../footer/Footer';
-import Profile from '../profile/Profile';
 import Buy from '../buy/Buy';
 
 import { Component } from 'react';
@@ -22,7 +21,7 @@ class App extends Component {
             lastName: '',
             email: '',
             password: '',
-            books: null,
+            books: [],
             visites: null,
             bonuses: null,
         }
@@ -32,7 +31,8 @@ class App extends Component {
         this.setState((prevState) => ({
             userData: {
                 ...prevState.userData,
-                ...data
+                ...data,
+                books: [...prevState.userData.books, ...data.books]
             }
         }), () => {
             console.log(this.state.userData);
@@ -46,9 +46,10 @@ class App extends Component {
                     user={this.state.userData}
                     changeUserData={this.changeUserData}/>
                 <Welcome/>
-                {/* <Profile user={this.state.userData}/> */}
                 <About/>
-                <Favorites/>
+                <Favorites 
+                    user={this.state.userData}
+                    changeUserData={this.changeUserData}/>
                 <Buy/>
                 <Coffee/>
                 <Contacts/>

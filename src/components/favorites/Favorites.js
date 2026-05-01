@@ -40,6 +40,19 @@ class Favorites extends Component {
         }
     }
 
+    getBook = (book) => {
+        const {user, changeUserData} = this.props
+
+        if (user.firstName && user.lastName) {
+            console.log(book.title)
+            changeUserData({
+                books: [book.title]
+            })
+        } else {
+            console.log('Пожалуйста, войдите или зарегистрируйтесь перед покупкой.')
+        }
+    }
+
     renderElements = (elements) => {
         if (!elements) return null;
 
@@ -48,7 +61,9 @@ class Favorites extends Component {
                 <p className="favorites__book-type">{elem.type}</p>
                 <h3 className="favorites__book-title">{elem.title} <br />{elem.author}</h3>
                 <p className="favorites__book-description">{elem.description}</p>
-                <button className="favorites__book-buy">Buy</button>
+                <button 
+                    onClick={() => this.getBook(elem)}
+                    className="favorites__book-buy">Buy</button>
                 <img src={elem.image} alt="book" className="favorites__book-image" />
             </div>
         ))
