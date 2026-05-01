@@ -19,7 +19,10 @@ const App = () => {
         firstName: '',
         lastName: '',
         email: '',
-        password: ''
+        password: '',
+        books: [],
+        bonuses: 0,
+        visits: 0,
     })
 
     const changeUserData = (data) => {
@@ -34,13 +37,13 @@ const App = () => {
             <Header 
                 changeUserData={changeUserData}/>
             <Welcome/>
+            <Profile user={userData}/>
             <About/>
             <Favorites/>
             {/* <Buy/> */}
             <Coffee/>
             <Contacts/>
             <Digital/>
-            {/* <Profile/> */}
             <Footer/>
         </div>
     )

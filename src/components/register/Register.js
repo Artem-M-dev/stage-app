@@ -53,7 +53,10 @@ const Register = (props) => {
         firstName,
         lastName,
         email,
-        password
+        password,
+        books: [],
+        visits: 0,
+        bonuses: 0
     };
 
     const validation = (name, value) => {
@@ -95,7 +98,8 @@ const Register = (props) => {
                 throw new Error('Failed to send data...');
             }
 
-            console.log(user);
+            const data = await response.json();
+            return data
 
         } catch (err) {
             console.error(err)
@@ -106,8 +110,10 @@ const Register = (props) => {
     const handlerSubmit = async (e) => {
         e.preventDefault();
 
-        await postUser(user);
-        changeUserData(user);
+        // await postUser(user);
+        const fullUser = await postUser(user);
+        console.log(fullUser);
+        changeUserData(fullUser);
 
         setErrors({
             firstname: '',
