@@ -7,6 +7,7 @@ import Favorites from '../favorites/Favorites';
 import Coffee from '../coffee/Coffee';
 import Contacts from '../contacts/Contacts';
 import Digital from '../digital/Digital';
+import DigitalProfile from '../digitalProfile/DigitalProfile';
 import Footer from '../footer/Footer';
 import Buy from '../buy/Buy';
 
@@ -53,7 +54,9 @@ class App extends Component {
                 <Buy/>
                 <Coffee/>
                 <Contacts/>
-                <Digital/>
+                {this.state.userData.firstName && this.state.userData.lastName 
+                ? <DigitalProfile user={this.state.userData}/> 
+                : <Digital changeUserData={this.changeUserData}/>}
                 <Footer/>
             </div>
         )

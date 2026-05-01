@@ -44,7 +44,7 @@ class Header extends Component {
                 lastName: '',
                 email: '',
                 password: '',
-                books: null,
+                books: [],
                 visites: null,
                 bonuses: null,
             })
@@ -70,6 +70,7 @@ class Header extends Component {
                                                     showModal={this.showModal} 
                                                     closeModal={this.closeModal}/> : null;
         const profile = modal === 'profile' ? <Profile
+                                                closeModal={this.closeModal}
                                                 user={this.props.user}/> : null
         const content = <View 
                             user={this.props.user}

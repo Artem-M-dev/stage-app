@@ -9,7 +9,7 @@ import { Component } from 'react';
 
 class Profile extends Component {
     render() {
-        const {user} = this.props
+        const {user, closeModal} = this.props
 
         return (
             <div className="profile">
@@ -21,7 +21,7 @@ class Profile extends Component {
                     <div className="profile__name-full">{user.firstName}</div>
                 </div>
                 <div className="profile__info">
-                    <div className="profile__close">
+                    <div onClick={closeModal} className="profile__close">
                         <div className="profile__close-top"></div>
                         <div className="profile__close-bottom"></div>
                     </div>
@@ -40,7 +40,7 @@ class Profile extends Component {
                         <div className="profile__info-icon">
                             <p className="info__icon-name">books</p>
                             <img src={book} alt="" />
-                            <p className="info__icon-count">{user.books ? user.books.length: ''}</p>
+                            <p className="info__icon-count">{user.books ? user.books.length : ''}</p>
                         </div>
                     </div>
                     <div className="profile__info-books">
