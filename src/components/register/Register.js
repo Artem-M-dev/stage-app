@@ -1,6 +1,7 @@
 import './register.scss';
 
 import { useState } from 'react';
+import { useHttp } from '../../hooks/http.hook';
 // import validator from 'validator';
 
 const Register = (props) => {
@@ -17,6 +18,7 @@ const Register = (props) => {
     });
 
     const {setModal, closeModal, changeUserData} = props;
+    const {request} = useHttp();
 
     const registerHandler = (e) => {
         const value = e.target.value
@@ -84,34 +86,10 @@ const Register = (props) => {
         }
     }
 
-    const postUser = async (user) => {
-        try {
-            const response = await fetch('http://localhost:3001/users', {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json;charset=utf-8'
-                },
-                body: JSON.stringify(user)
-            })
-
-            if (!response.ok) {
-                throw new Error('Failed to send data...');
-            }
-
-            const data = await response.json();
-            return data
-
-        } catch (err) {
-            console.error(err)
-            throw err
-        }
-    }
-
     const handlerSubmit = async (e) => {
         e.preventDefault();
 
-        // await postUser(user);
-        const fullUser = await postUser(user);
+        const fullUser = await request('http://localhost:3001/users', "POST", JSON.stringify(user))
         console.log(fullUser);
         changeUserData(fullUser);
 

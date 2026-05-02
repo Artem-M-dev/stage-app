@@ -1,11 +1,13 @@
 import './favorites.scss';
 
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { useHttp } from '../../hooks/http.hook';
 
 const Favorites = (props) => {
     const [type, setType] = useState('winter');
     const [cards, setCards] = useState({});
+
+    const {request} = useHttp();
 
     const tabs = [
         {id: "winter", label: "Winter"},
@@ -19,8 +21,10 @@ const Favorites = (props) => {
     }
 
     useEffect(() => {
-        requireCards();
-    }, [])
+        request('http://localhost:3001/books')
+            .then(res => setCards(res[0]))
+            .catch(err => console.error(err))
+    }, [request])
 
     const getBook = (book) => {
         const {user, changeUserData} = props;
@@ -35,18 +39,6 @@ const Favorites = (props) => {
             console.log('Пожалуйста, войдите или зарегистрируйтесь перед покупкой.')
         }
     }
-
-    const requireCards = async () => {
-        try {
-            const res = await fetch('http://localhost:3001/books');
-            const data = await res.json();
-
-            setCards(data[0]);
-        } catch (err) {
-            console.error(err);
-            throw err
-        }
-    };
 
     const renderElements = (elements) => {
         if (!elements) return null

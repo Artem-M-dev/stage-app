@@ -1,6 +1,7 @@
 import './login.scss';
 
 import { useState, useEffect } from 'react';
+import { useHttp } from '../../hooks/http.hook';
 
 const Login = (props) => {
     const [users, setUsers] = useState([]);
@@ -8,23 +9,13 @@ const Login = (props) => {
     const [secondField, setSecondField] = useState('');
 
     const {closeModal, setModal, changeUserData} = props;
+    const {request} = useHttp();
 
     useEffect(() => {
-        getUsers()
-    }, [])
-
-    const getUsers = async () => {
-        try {
-            const data = await fetch('http://localhost:3001/users');
-            const res = await data.json();
-
-            setUsers(res);
-
-        } catch (err) {
-            console.error(err);
-            throw err
-        }
-    }
+        request('http://localhost:3001/users')
+            .then(res => setUsers(res))
+            .catch(err => console.error(err))
+    }, [request])
 
     const userSearch = (allUsers) => {
         const user = allUsers.find(user => 

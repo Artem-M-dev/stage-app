@@ -1,17 +1,21 @@
 import './digital.scss';
 
 import { useState, useEffect } from 'react';
+import { useHttp } from '../../hooks/http.hook';
 
 const Digital = (props) => {
     const [users, setUsers] = useState([]);
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
 
-    const {changeUserData} = props
+    const {changeUserData} = props;
+    const {request} = useHttp();
 
     useEffect(() => {
-        getUsers();
-    }, [])
+        request('http://localhost:3001/users')
+            .then(res => setUsers(res))
+            .catch(err => console.error(err))
+    }, [request])
 
     const digitalHandler = (e, trigger) => {
         const value = e.target.value;
@@ -25,19 +29,6 @@ const Digital = (props) => {
                 break;
             default:
                 return;
-        }
-    }
-
-    const getUsers = async () => {
-        try {
-            const data = await fetch('http://localhost:3001/users');
-            const res = await data.json();
-
-            setUsers(res);
-
-        } catch (err) {
-            console.error(err);
-            throw err
         }
     }
 

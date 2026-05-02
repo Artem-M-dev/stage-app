@@ -171,15 +171,14 @@
       "id": "EDs_pcdm-0E"
     },
     {
-      "firstName": "fasdfas",
-      "lastName": "adafdad",
-      "email": "task@gmail.com",
-      "password": "123412!!a",
+      "firstName": "myname",
+      "lastName": "secondname",
+      "email": "work@gmail.com",
+      "password": "123123!#a",
       "books": [],
       "visits": 0,
       "bonuses": 0,
-      "id": "LZBdHtXMFRk"
+      "id": "yR0ZORDsV4Q"
     }
-  ],
-  "$schema": "./node_modules/json-server/schema.json"
+  ]
 }
